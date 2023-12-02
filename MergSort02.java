@@ -18,32 +18,36 @@ public class MergSort02 {
     }
 
     public static void mergeSort(int[] arr, int l, int r) {
+// Divide a matriz até que o intervalo [l, r] contenha apenas um elemento.
         if (l < r) {
-            int m = (l + r) / 2;
+            int m = (l + r) / 2; // Encontre o ponto médio de matriz.
 
-            mergeSort(arr, l, m);
-            mergeSort(arr, m + 1, r);
+            mergeSort(arr, l, m); // Classifique a metade esquerda da matriz.
+            mergeSort(arr, m + 1, r); // Classifique a metade direita da matriz.
 
-            merge(arr, l, m, r);
+            merge(arr, l, m, r); // Mescla as duas metades classificadas.
         }
     }
 
     public static void merge(int[] arr, int l, int m, int r) {
-        int n1 = m - l + 1;
-        int n2 = r - m;
+        int n1 = m - l + 1; // Tamanho da metade esquerda 
+        int n2 = r - m; // Tamanho da metade direita.
 
-        int[] L = new int[n1];
-        int[] R = new int[n2];
+        int[] L = new int[n1]; // Crie uma matriz temporária para armazenar a metade esquerda.
+        int[] R = new int[n2]; // Crie uma matriz temporária para armazenar a metade direita. 
 
+// Copie os elementos da metade esquerda para a matriz temporária L.
         for (int i = 0; i < n1; ++i)
             L[i] = arr[l + i];
+
+// Copie os elementos da metade direita para a matriz temporária R.
         for (int j = 0; j < n2; ++j)
             R[j] = arr[m + 1 + j];
 
         int i = 0, j = 0;
 
-        int k = l;
-        while (i < n1 && j < n2) {
+        int k = l; // Inicialize o índice da matriz ordenada. 
+        while (i < n1 && j < n2) { // Mescle as matrizes L e R em uma matriz ordenada.
             if (L[i] <= R[j]) {
                 arr[k] = L[i];
                 i++;
@@ -54,13 +58,13 @@ public class MergSort02 {
             k++;
              }
 
-        while (i < n1) {
+        while (i < n1) { // Copie os elementos restantes da matriz L, se houver. 
             arr[k] = L[i];
             i++;
             k++;
         }
 
-        while (j < n2) {
+        while (j < n2) { // Copie os elementos restantes da matriz R, se houver.
             arr[k] = R[j];
             j++;
             k++;
