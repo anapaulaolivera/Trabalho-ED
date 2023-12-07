@@ -21,7 +21,7 @@ public class MergSort02 {
         if (l < r) {
             int m = (l + r) / 2;
 
-            mergeSort(arr, l, m);
+            mergeSort(arr, l, m); 
             mergeSort(arr, m + 1, r);
 
             merge(arr, l, m, r);
@@ -42,8 +42,8 @@ public class MergSort02 {
 
         int i = 0, j = 0;
 
-        int k = l;
-        while (i < n1 && j < n2) {
+        int k = l; 
+        while (i < n1 && j < n2) { 
             if (L[i] <= R[j]) {
                 arr[k] = L[i];
                 i++;
